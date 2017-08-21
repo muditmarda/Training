@@ -2,7 +2,7 @@ import java.util.Arrays;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
-public class Vampirenum {
+public class VampireNum {
     public static int count = 0, num = 155;
 
     // num is the number of both 4 and 6 vampire numbers that will be generated and later sorted
@@ -211,4 +211,3 @@ public class Vampirenum {
         }
     }
 }
-

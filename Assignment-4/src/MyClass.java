@@ -1,12 +1,15 @@
+// checkNaturalNum method of MyClass takes a double as input and
+// checks if it is a Natural number or not.
+
 public class MyClass {
-    public static void checkFirst100NaturalNum (Integer x) throws Exception1, Exception2, Exception3{
+    public String checkNaturalNum(double x) throws Exception1, Exception2, Exception3{
         if (x < 0)
-            throw new Exception1("x cannot be negative.");
+            throw new Exception1();
         else if (x == 0)
             throw new Exception2("x cannot be zero.");
-        else if (x > 100)
-            throw new Exception3("x cannot be greater than 100.");
+        else if (x != (int)x)
+            throw new Exception3("x cannot have a decimal value.");
         else
-            System.out.println("All is well!");
+            return ("All is well!");
     }
 }

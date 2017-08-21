@@ -1,12 +1,12 @@
 package mudit.assignment.data;
 
 public class Dat {
-    int abc;
-    char def;
+    private int a;
+    private char c;
 
-    public void printvar() {
-        System.out.println(abc);
-        System.out.println(def);
+    public void printVars() {
+        System.out.println(a);
+        System.out.println(c);
     }
 
     public void print2() {

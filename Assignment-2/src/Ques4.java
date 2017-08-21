@@ -11,9 +11,9 @@ public class Ques4 {
         System.out.println((str));
     }
     public static void main(String[] args){
-        Ques4[] Ques4arr = new Ques4[2];
-        Ques4arr[0] = new Ques4("Why do we fall, Bruce?");
-        Ques4arr[1] = new Ques4("So we can learn to pick ourselves up.");
+        Ques4[] arr = new Ques4[2];
+        arr[0] = new Ques4("Why do we fall, Bruce?");
+        arr[1] = new Ques4("So we can learn to pick ourselves up.");
     }
 }
 

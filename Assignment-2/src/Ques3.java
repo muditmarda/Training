@@ -12,7 +12,7 @@ public class Ques3 {
         System.out.println("Hello!");
     }
     public static void main(String[] args){
-        Ques3[] Ques3arr;
+        Ques3[] arr;
     }
 }
 

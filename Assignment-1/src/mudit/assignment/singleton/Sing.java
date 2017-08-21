@@ -1,13 +1,13 @@
 package mudit.assignment.singleton;
 
 public class Sing {
-    String str;
-    public static Sing func(String str){
+    private String str;
+    public static Sing setStr(String str){
     	Sing obj  = new Sing();
-	obj.str = str;
+        obj.str = str;
     	return obj;
     }
-    public void printstr(){
+    public void printStr(){
         System.out.println(str);
     }   
 }
