@@ -1,0 +1,38 @@
+1.	SELECT COUNT(DISTINCT film_list.title) AS '# Documentaries with Deleted scenes'
+	FROM film
+	JOIN film_list ON (film.film_id = film_list.FID)
+	WHERE FIND_IN_SET('Deleted Scenes', film.special_features) AND film_list.category='Documentary';
+
+2.	SELECT COUNT(rental.rental_id) AS '# Sci-Fi movies rented by the store managed by Jon Stephens' 
+	FROM rental 
+	JOIN staff USING (staff_id) 
+	JOIN inventory USING(inventory_id) 
+	JOIN film_list ON(inventory.film_id = film_list.FID) 
+	WHERE film_list.category = 'Sci-Fi' 
+	AND staff.first_name = 'Jon' 
+	AND staff.last_name = 'Stephens';
+
+3.	SELECT sales_by_film_category.total_sales AS 'Total Sales from Animation movies' 
+	FROM sales_by_film_category 
+	WHERE sales_by_film_category.category = 'Animation';
+
+4.	SELECT film_list.category 
+	FROM customer 
+	JOIN rental USING(customer_id) 
+	JOIN inventory USING(inventory_id) 
+	JOIN film_list ON (inventory.film_id = film_list.FID) 
+	WHERE customer.first_name = 'Patricia'
+	AND customer.last_name = 'Johnson'
+	GROUP BY film_list.category 
+	ORDER BY COUNT(film_list.category) DESC LIMIT 3;
+
+5.	SELECT COUNT(film.film_id) AS '# R rated movies rented by Susan Wilson'
+	FROM customer 
+	JOIN rental USING(customer_id) 
+	JOIN inventory USING(inventory_id) 
+	JOIN film USING(film_id)
+	WHERE customer.first_name = 'Susan'
+	AND customer.last_name = 'Wilson' 
+	AND film.rating = 'R';
+
+

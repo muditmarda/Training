@@ -1,0 +1,39 @@
+1.	SELECT film.title 
+	FROM film 
+	JOIN film_category USING (film_id) 
+	JOIN category USING (category_id) 
+	WHERE category.name = 'Comedy' 
+	AND film.rating = 'PG-13';
+
+2.	SELECT film_list.title 
+	FROM rental
+	JOIN inventory USING (inventory_id)
+	JOIN film_list ON (inventory.film_id = film_list.FID)
+	WHERE category = 'Horror'
+	GROUP BY film_list.title
+	ORDER BY COUNT(film_list.FID) DESC
+	LIMIT 3;
+
+3.	SELECT DISTINCT customer_list.name
+	FROM customer_list 
+	JOIN rental ON (customer_list.ID = rental.customer_id)
+	JOIN inventory USING (inventory_id)
+	JOIN film_list ON (inventory.film_id = film_list.FID)
+	WHERE customer_list.country = 'India'
+	AND film_list.category = 'Sports'
+	ORDER BY customer_list.name;
+
+4.	SELECT DISTINCT name
+	FROM rental
+	JOIN inventory USING (inventory_id)
+	JOIN customer_list ON (customer_list.ID = rental.customer_id)
+	JOIN film_actor USING (film_id)
+	JOIN actor USING (actor_id)
+	WHERE customer_list.country = 'Canada'
+	AND actor.first_name = 'NICK' 
+	AND actor.last_name = 'WAHLBERG';
+
+5.	SELECT COUNT(*)  as '# Movies featuring Sean Williams'
+	FROM actor JOIN film_actor USING (actor_id)
+	WHERE actor.first_name = 'SEAN'
+	AND actor.last_name = 'WILLIAMS';
