@@ -1,0 +1,48 @@
+1. javax.xml.parsers.DocumentBuilderFactory#newInstance()
+
+DocumentBuilderFactory is an abstact class that defines a factory API that enables applications to obtain a parser that produces DOM object trees from XML documents. In it's class definition, the constructor is Protected to prevent instantiation. Thus, the only way to obtain a new instance of the DocumentBuilderFactory is through the static method, newInstance() (or the overloaded newInstance(String, ClassLoader)). Once an application has obtained a reference to a DocumentBuilderFactory, it can use the factory to configure and obtain parser instances.
+
+For example,
+
+DocumentBuilderFactory abstractFactory = DocumentBuilderFactory.newInstance();
+DocumentBuilder factory = abstractFactory.newDocumentBuilder(); 
+Document doc = factory.parse(fileOrString) // Parses the content of the given file or string as an XML document and returns a new DOM (Document object)
+
+DocumentBuilderFactory#newInstance() gives a DocumentBuilder, which is a factory for Documents. So DocumentBuilderFactory is a factory that produces factories, or in other words, an abstract factory. In this example, DocumentBuilderFactory (Abstract Factory) creates DocumentBuilder (Factory) which creates Documents (Products).
+
+Abstract Factory is creational software design pattern. This pattern provides interfaces / abstract classes for creating families of related or dependent objects without specifying their concrete classes. The reason why Abstract Factory Pattern is best suited for this scenario is because one can dynamically decide which implementation to use and which type of document to create in the document tree hierarchy. 
+
+
+
+2. javax.xml.transform.TransformerFactory#newInstance()
+
+TransformerFactory is an abstact class that defines a factory API that enables applications to create Template objects containing the XLS file which can be used to create the Transformer. In it's class definition, the constructor is Protected to prevent instantiation. Thus, the only way to obtain a new instance of the TransformerFactory is through the static method, newInstance() (or the overloaded newInstance(String, ClassLoader)). Once an application has obtained a reference to a TransformerFactory, it can use the factory to configure and obtain parser instances.
+
+For example,
+
+TransformerFactory factory = TransformerFactory.newInstance();
+Templates template = factory.newTemplates(new StreamSource(new FileInputStream(xslfile)));
+Transformer xformer = template.newTransformer();
+
+TransformerFactory#newInstance() gives a Template, which is a factory for Transformers. So TransformerFactory is a factory that produces factories, or in other words, an abstract factory. In this example, TransformerFactory (Abstract Factory) creates Template (Factory) which creates Transformers (Products).
+
+Abstract Factory is creational software design pattern. This pattern provides interfaces / abstract classes for creating families of related or dependent objects without specifying their concrete classes. The reason why Abstract Factory Pattern is best suited for this scenario is because one can dynamically decide which implementation to use and which type of Transformer to create. 
+
+
+	
+3. javax.xml.xpath.XPathFactory#newInstance()
+
+XPathFactory is an abstact class that defines a factory API that enables applications to returns a single node that matches the given XPath expression. XPath provides syntax to define part of an XML document. XPath Expression is a query language to select part of the XML document based on the query String. Using XPath Expressions, we can find nodes in any xml document satisfying the query string. In it's class definition, the constructor is Protected to prevent instantiation. Thus, the only way to obtain a new instance of the XPathFactory is through the static method, newInstance() (or the overloaded newInstance(String, ClassLoader)). Once an application has obtained a reference to a XPathFactory, it can use the factory to configure and obtain parser instances.
+
+For example,
+
+XPathFactory xpathFactory = XPathFactory.newInstance();
+XPath xpath = xpathFactory.newXPath();
+XPathExpression expr = xpath.compile(XPATH_EXPRESSION_STRING);
+
+XPathFactory#newInstance() gives an XPath, which is a factory for XPathExpressions. So XPathFactory is a factory that produces factories, or in other words, an abstract factory. In this example, XPathFactory (Abstract Factory) creates XPath (Factory) which creates XPathExpression (Products).
+
+Abstract Factory is creational software design pattern. This pattern provides interfaces / abstract classes for creating families of related or dependent objects without specifying their concrete classes. The reason why Abstract Factory Pattern is best suited for this scenario is because one can dynamically decide which implementation to use and which type of expression to create. 
+
+
+
