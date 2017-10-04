@@ -1,0 +1,25 @@
+#mainBody{
+	padding-left:8%;
+	padding-right:8%;
+}
+
+#footer{
+	background-color:#444;
+	width:100%;
+	padding:.7%;
+	margin-top:3%; 	
+	color:#AAA;
+}
+
+ .description{
+	text-align:center; 
+ }
+
+#footer{
+	text-align:center; 
+ } 
+
+ .content{
+	padding-top: 9%;
+	
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+  		<meta name="description" content="Eatboat Ordering">
+  		<meta name="keywords" content="HTML,CSS,JavaScript,Mudit,Eatboat,Restaurant,Ordering">
+  		<meta name="author" content="Mudit Marda">
+  		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Eatboat</title>
+		<link rel="shortcut icon" href="favicon.ico" type="image/png">
+		<link rel="stylesheet" type="text/css" href="bootstrap-4.0.0-alpha.6-dist/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="myStyle.css">
+	</head>
+	<body onload="setTables()">
+		<div id = "header" class="page-header">
+			<h1>Eatboat</h1>
+		</div>
+
+		<div id = "mainBody" class = "row container description">
+
+			<div id = "tables" class = "col-lg-4 col-md-4">
+				<div id = "tableList">
+				</div>
+			</div>
+
+			<div id = "items" class="col-lg-8 col-md-8">
+				<h2>Menu</h2>
+				<br>
+				<div class = "row container" id = "itemList">
+				</div>
+			</div>
+
+			 <p id="p1" draggable="true" ondragstart="dragstart_handler(event);">This element is draggable.</p>
+
+			<div id="myModal">
+      		</div>
+
+    	</div> 
+		
+		<div id="footer">
+			<p>&copy; Eatboat Pvt. Ltd. All Rights Reserved. </p>
+		</div>
+		<script src="data.json" type="text/javascript" ></script>
+		<script src="myScipt.js" type="text/javascript" ></script>
+	</body>
