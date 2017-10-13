@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<!-- saved from url=(0062)file:///home/zemoso/IdeaProjects/Eatboat%20Ordering/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+  		<meta name="description" content="Eatboat Ordering">
+  		<meta name="keywords" content="HTML,CSS,JavaScript,Mudit,Eatboat,Restaurant,Ordering">
+  		<meta name="author" content="Mudit Marda">
+  		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Eatboat</title>
+		<link rel="shortcut icon" href="file:///home/zemoso/IdeaProjects/Eatboat%20Ordering/favicon.ico" type="image/png">
+		<link rel="stylesheet" type="text/css" href="./Eatboat_files/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="./Eatboat_files/myStyle.css">
+	</head>
+	<body onload="setRestaurants()">
+		<div id="header" class="page-header">
+			<h1>Eatboat</h1>
+		</div>
+
+		<div id="mainBody" class="row container description">
+
+			<div id="tables" class="col-lg-4 col-md-4">
+				<div id="tableList"><table class="table table-hover"><thead><tr><th>Tables<br><input type="text" id="tableSearchInput" onkeyup="tableSearchFunction()" placeholder="Search for tables.."></th></tr></thead><tbody><tr><td id="tab0" ondrop="drop(event)" ondragover="allowDrop(event)" onclick="orderDetails(event)"><h5>Table 1</h5>Rs. 0<br>Total Items: 0</td></tr><tr><td id="tab1" ondrop="drop(event)" ondragover="allowDrop(event)" onclick="orderDetails(event)"><h5>Table 2</h5>Rs. 0<br>Total Items: 0</td></tr><tr><td id="tab2" ondrop="drop(event)" ondragover="allowDrop(event)" onclick="orderDetails(event)"><h5>Table 3</h5>Rs. 0<br>Total Items: 0</td></tr><tr><td id="tab3" ondrop="drop(event)" ondragover="allowDrop(event)" onclick="orderDetails(event)"><h5>Table 4</h5>Rs. 0<br>Total Items: 0</td></tr><tr><td id="tab4" ondrop="drop(event)" ondragover="allowDrop(event)" onclick="orderDetails(event)"><h5>Table 5</h5>Rs. 110<br>Total Items: 1</td></tr><tr><td id="tab5" ondrop="drop(event)" ondragover="allowDrop(event)" onclick="orderDetails(event)"><h5>Table 6</h5>Rs. 0<br>Total Items: 0</td></tr><tr><td id="tab6" ondrop="drop(event)" ondragover="allowDrop(event)" onclick="orderDetails(event)"><h5>Table 7</h5>Rs. 0<br>Total Items: 0</td></tr><tr><td id="tab7" ondrop="drop(event)" ondragover="allowDrop(event)" onclick="orderDetails(event)"><h5>Table 8</h5>Rs. 0<br>Total Items: 0</td></tr></tbody></table></div>
+			</div>
+
+			<div id="items" class="col-lg-8 col-md-8">
+				<div id="itemList"><table class="table table-hover"><thead><tr><th>Items<br><input type="text" id="itemSearchInput" onkeyup="itemSearchFunction()" placeholder="Search for items.."></th></tr></thead><tbody><tr><td id="item0" draggable="true" ondragstart="dragstart_handler(event);">French Fries (Rs. 60)</td></tr><tr><td id="item1" draggable="true" ondragstart="dragstart_handler(event);">Chilly Babycorn (Rs. 110)</td></tr><tr><td id="item2" draggable="true" ondragstart="dragstart_handler(event);">Veg Spring Roll (Rs. 120)</td></tr><tr><td id="item3" draggable="true" ondragstart="dragstart_handler(event);">Chicken 65 (Rs. 140)</td></tr><tr><td id="item4" draggable="true" ondragstart="dragstart_handler(event);">Daal Tadka (Rs. 80)</td></tr><tr><td id="item5" draggable="true" ondragstart="dragstart_handler(event);">Kadai Paneer (Rs. 120)</td></tr><tr><td id="item6" draggable="true" ondragstart="dragstart_handler(event);">Paneer Butter Masala (Rs. 110)</td></tr><tr><td id="item7" draggable="true" ondragstart="dragstart_handler(event);">Mix Veg (Rs. 80)</td></tr><tr><td id="item8" draggable="true" ondragstart="dragstart_handler(event);">Chicken Butter Masala (Rs. 150)</td></tr><tr><td id="item9" draggable="true" ondragstart="dragstart_handler(event);">Plain Roti (Rs. 6)</td></tr><tr><td id="item10" draggable="true" ondragstart="dragstart_handler(event);">Butter Roti  (Rs. 10)</td></tr><tr><td id="item11" draggable="true" ondragstart="dragstart_handler(event);">Plain Naan (Rs. 25)</td></tr><tr><td id="item12" draggable="true" ondragstart="dragstart_handler(event);">Butter Naan (Rs. 30)</td></tr><tr><td id="item13" draggable="true" ondragstart="dragstart_handler(event);">Cold Drink (Rs. 20)</td></tr><tr><td id="item14" draggable="true" ondragstart="dragstart_handler(event);">Ice-Cream (Rs. 40)</td></tr><tr><td id="item15" draggable="true" ondragstart="dragstart_handler(event);">Rasgulla (2 Pcs) (Rs. 30)</td></tr><tr><td id="item16" draggable="true" ondragstart="dragstart_handler(event);">Dry Chana (Rs. 60)</td></tr><tr><td id="item17" draggable="true" ondragstart="dragstart_handler(event);">Veg Pakoda (Rs. 70)</td></tr></tbody></table></div>
+			</div>
+
+			<div class="modal" id="myModal" role="dialog" style="display: none;">
+			    <div class="modal-dialog">
+			    
+				    <!-- Modal content-->
+				    <div class="modal-content">
+				      <div id="modal-header">
+				        <div id="modal-header-content"><h4>Table 5 | Order Details</h4></div>
+				        <button type="button" class="close" id="bye" data-dismiss="modal">×</button>
+				      </div>
+
+				      <div id="modal-body"><table class="table table-hover" id="myTable"><thead><tr><th>Sl. No.</th><th>Item</th><th>Price</th><th>Servings</th><th></th></tr></thead><tbody></tbody></table></div>
+
+				      <div id="modal-footer">
+			        	
+			          </div>
+				    
+				    </div>
+		    	</div>
+		  	</div>
+
+		</div> 
+		
+		<div id="footer">
+			<p>© Eatboat Pvt. Ltd. All Rights Reserved. </p>
+		</div>
+
+		<script src="./Eatboat_files/data.json" type="text/javascript"></script>
+		<script src="./Eatboat_files/myScipt.js" type="text/javascript"></script>
+	
+	
+</body></html>

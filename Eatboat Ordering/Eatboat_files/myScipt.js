@@ -5,70 +5,41 @@ var tables = document.getElementById('tableList');
 var items = document.getElementById('itemList');
 var itemsOrdered = new Array(tablesArr.length);
 for (var i = 0; i < tablesArr.length; i++){
-	itemsOrdered[i] = Array.apply(null, Array(itemsArr.length)).map(Number.prototype.valueOf,0);
+	itemsOrdered[i] = [];
 }
-var usingTab_id;
 
-function orderDetails(tab_id){
+// console.log();
+
+function orderDetails(ev){
+	var tab_id = ev.target.id;
 	tab_id = tab_id[3];
 	tab_id = parseInt(tab_id);
-	usingTab_id = tab_id;
 	var head = document.getElementById("modal-header-content");
 	var txt = '<h4>Table ';
-	txt += tab_id + 1;
+	var tab_num = tab_id + 1;
+	txt += tab_num;
 	txt += ' | Order Details</h4>'
 	head.innerHTML = txt;
 	var body = document.getElementById('modal-body');
-	var sl_no = 1;
 	txt = '<table class="table table-hover" id = "myTable"><thead><tr><th>Sl. No.</th><th>Item</th><th>Price</th><th>Servings</th><th></th></thead><tbody>';
 	for(var i = 0; i < itemsOrdered[tab_id].length; i++){
-		if (itemsOrdered[tab_id][i] === 0){
-			continue;
-		}
-		txt += '<tr id = "';
-		txt += tab_id;
-		txt += i;
-		txt += '"><td>';
-		txt += sl_no;
+		txt += '<tr><td>';
+		txt += i + 1;
 		txt += '</td><td>';
-		txt += itemsArr[i].name;
+		txt += itemsArr[itemsOrdered[tab_id][i]].name;
 		txt += '</td><td>';
-		txt += itemsArr[i].cost;
-		txt += '</td><td><input id="servingsCount" type="number" value="'
-		txt += itemsOrdered[tab_id][i];
-		txt += '" onchange = "servingsChanged(this)"></td><td><img src = "deleteIcon.png" height = "15%" onclick="deleteRow(this)"></td></td>';
-		sl_no++;
+		txt += itemsArr[itemsOrdered[tab_id][i]].cost;
+		txt += '</td><td><td><img src = "deleteIcon.png" class = "deleteItem" height = "15%"></td></td>';
 	}
 	txt += '</tbody></table>';
 	body.innerHTML = txt;
-	console.log(txt);
 	modal.style.display = "block";
-}
-
-function servingsChanged(r){
-	var i = r.parentNode.parentNode.id[1];
-    var servings = document.getElementById("servingsCount").value;
-    console.log(itemsOrdered[usingTab_id][i] * itemsArr[i].cost);
-	tablesArr[usingTab_id].total_amount -= itemsOrdered[usingTab_id][i] * itemsArr[i].cost  ;
-	tablesArr[usingTab_id].total_items -= itemsOrdered[usingTab_id][i];
-	itemsOrdered[usingTab_id][i] = parseInt(servings); 
-	// console.log(servings);
-	tablesArr[usingTab_id].total_amount += itemsOrdered[usingTab_id][i] * itemsArr[i].cost;
-    tablesArr[usingTab_id].total_items += itemsOrdered[usingTab_id][i];
-    setTables();
-    
-}
-
-function deleteRow(r) {
-	var i = r.parentNode.parentNode.id[1];
-    var j = r.parentNode.parentNode.rowIndex;
-    document.getElementById("myTable").deleteRow(j);
-   	itemsOrdered[usingTab_id][i]--;
-
-   	tablesArr[usingTab_id].total_amount -= itemsArr[i].cost;
-    tablesArr[usingTab_id].total_items--;
-    setTables();
-    orderDetails("tab" + usingTab_id);
+	var deleteItems = document.getElementsByClassName("deleteItem");
+	for(var i = 0; i < itemsOrdered[tab_id].length; i++){
+		deleteItems[i].addEventListener("click", function(){
+			document.getElementById("myTable").deleteRow(i);
+		});
+	}
 }
 
 var closes1 = document.getElementById("bye");
@@ -78,7 +49,7 @@ closes1.onclick = function() {
     modal.style.display = "none";
 }
 
-// When the user clicks anywhere outside 
+// When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
     if (event.target == modal) {
         modal.style.display = "none";
@@ -91,13 +62,25 @@ function setTables(){
 	for (var i = 0; i < tablesArr.length; i++){
 		txt += '<tr><td id = "tab'
 		txt += i;
-		txt += '" ondrop="drop(event)" ondragover="allowDrop(event)" onclick = "orderDetails(event.target.id)"><h5>'
+		txt += '" ondrop="drop(event)" ondragover="allowDrop(event)" onclick = "orderDetails(event)"><h5>'
 		txt += tablesArr[i].name;
 		txt += '</h5>Rs. ' ;
 		txt += tablesArr[i].total_amount;
 		txt += '<br>Total Items: ';
 		txt += tablesArr[i].total_items;
 		txt += '</td></tr>';
+		
+		// new_div.addEventListener("dragover",allowDrop,false);	
+		// new_div.addEventListener("drop",drop,false);
+		// new_div.addEventListener("click",showBill,false);
+
+		// new_div.id = tables[i].id;
+		// new_div.name = tables[i].name;
+		// new_div.total_items = tables[i].total_items;
+		// new_div.total_amount = tables[i].total_amount;
+		// new_div.items = tables[i].items;
+
+		// tables.appendChild(new_div);
   	}
 
 	txt += '</tbody></table>';
@@ -182,8 +165,9 @@ function drop(ev) {
     var item_id = data[4];
     var tab_id = ev.target.id;
     tab_id = tab_id[3];
-    itemsOrdered[tab_id][item_id]++;
+    itemsOrdered[tab_id].push(item_id);
     tablesArr[tab_id].total_amount += itemsArr[item_id].cost;
     tablesArr[tab_id].total_items++;
     setTables();
+    console.log(itemsOrdered);
 }

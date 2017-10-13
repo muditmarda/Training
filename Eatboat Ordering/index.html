@@ -11,7 +11,7 @@
 		<link rel="stylesheet" type="text/css" href="bootstrap-4.0.0-alpha.6-dist/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="myStyle.css">
 	</head>
-	<body onload="setTables()">
+	<body onload="setRestaurants()">
 		<div id = "header" class="page-header">
 			<h1>Eatboat</h1>
 		</div>
@@ -24,22 +24,40 @@
 			</div>
 
 			<div id = "items" class="col-lg-8 col-md-8">
-				<h2>Menu</h2>
-				<br>
-				<div class = "row container" id = "itemList">
+				<div id = "itemList">
 				</div>
 			</div>
 
-			 <p id="p1" draggable="true" ondragstart="dragstart_handler(event);">This element is draggable.</p>
+			<div class="modal" id="myModal" role="dialog">
+			    <div class="modal-dialog">
+			    
+				    <!-- Modal content-->
+				    <div class="modal-content">
+				      <div id="modal-header">
+				        <div id = "modal-header-content">
+				        </div>
+				        <button type="button" class="close" id="bye" data-dismiss="modal">&times;</button>
+				      </div>
 
-			<div id="myModal">
-      		</div>
+				      <div id="modal-body">
+				      		
+				      </div>
 
-    	</div> 
+				      <div id="modal-footer">
+			        	
+			          </div>
+				    
+				    </div>
+		    	</div>
+		  	</div>
+
+		</div> 
 		
 		<div id="footer">
 			<p>&copy; Eatboat Pvt. Ltd. All Rights Reserved. </p>
 		</div>
+
 		<script src="data.json" type="text/javascript" ></script>
 		<script src="myScipt.js" type="text/javascript" ></script>
+	
 	</body>
